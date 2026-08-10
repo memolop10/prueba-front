@@ -1,0 +1,52 @@
+.dashboard-main {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 72px minmax(380px, 1.2fr) minmax(450px, 1.8fr);
+  gap: 20px;
+  padding: 24px;
+  min-height: 560px;
+  align-items: stretch;
+  background: transparent;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+  box-sizing: border-box;
+}
+
+/* Laptop - reduce to sidebar + single column, stack panels vertically in main column */
+@media (max-width: 1024px) {
+  .dashboard-main {
+    grid-template-columns: 72px 1fr;
+    grid-auto-rows: min-content;
+  }
+
+  .dashboard-main > *:nth-child(2) {
+    /* CalculatorPanel */
+    grid-column: 2 / 3;
+  }
+
+  .dashboard-main > *:nth-child(3) {
+    /* RemittancesPanel below calculator */
+    grid-column: 2 / 3;
+  }
+}
+
+/* Tablet and below - collapse sidebar and keep main content column */
+@media (max-width: 768px) {
+  .dashboard-main {
+    grid-template-columns: 56px 1fr;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .dashboard-main > *:nth-child(1) {
+    /* Sidebar stays on the left, narrow */
+    grid-column: 1 / 2;
+  }
+
+  .dashboard-main > *:nth-child(2),
+  .dashboard-main > *:nth-child(3) {
+    grid-column: 2 / 3;
+  }
+}
