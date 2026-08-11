@@ -86,3 +86,133 @@
     background: #233b5c;
   }
 }
+
+/* Hamburger for mobile */
+.sidebar__hamburger {
+  display: none;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 1200;
+  background: #111827;
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Drawer styles */
+.sidebar__drawer {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 16px;
+  width: auto;
+  max-width: none;
+  background: #0f172a;
+  color: #fff;
+  z-index: 1300;
+  padding: 16px;
+  box-shadow: 2px 0 20px rgba(2,6,23,0.6);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sidebar__drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.sidebar__drawer-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar__drawer-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.sidebar__drawer-item:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.sidebar__drawer-item-label {
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+/* Mobile and tablet breakpoint: <=1024px (use hamburger/drawer instead of fixed sidebar) */
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none; /* hide fixed sidebar on small screens */
+  }
+
+  .sidebar__hamburger {
+    display: flex;
+    left: 16px;
+    top: 16px;
+    transform: none;
+  }
+
+  /* Ensure drawer covers enough area */
+  .sidebar__drawer {
+    left: 16px;
+    right: 16px;
+    width: auto;
+    transform: none;
+    max-width: none;
+    border-radius: 14px;
+    top: 8px;
+    bottom: 8px;
+  }
+}
+
+@media (max-width: 425px) {
+  .sidebar__hamburger {
+    left: 8px;
+    top: 8px;
+  }
+
+  .sidebar__drawer {
+    left: 8px;
+    right: 8px;
+  }
+}
+
+/* Ensure hamburger is hidden on any screen larger than 1024px */
+@media (min-width: 1025px) {
+  .sidebar__hamburger {
+    display: none !important;
+  }
+  .sidebar__drawer {
+    display: none !important;
+  }
+}

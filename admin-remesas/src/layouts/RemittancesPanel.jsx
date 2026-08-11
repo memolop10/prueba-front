@@ -10,19 +10,17 @@ import { useRemittanceStore } from '../store/useRemittanceStore'
 import '../styles/RemittancesPanel.scss'
 
 export default function RemittancesPanel() {
-  const { remittances, page, limit, total, error, fetchRemittances, setPage, clearError } = useRemittanceStore()
+  const { remittances, page, limit, total, search, loading, fetchRemittances, setSearch, setPage, error, clearError } = useRemittanceStore()
   const [showSearch, setShowSearch] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
-    fetchRemittances({ page, limit })
-  }, [page, limit])
+    fetchRemittances({ page, limit, search })
+  }, [page, limit, search])
 
   const handleSearch = (value) => {
     setSearchTerm(value)
-    useRemittanceStore.setState({ search: value })
-    fetchRemittances({ page: 1, limit, search: value })
-    setPage(1)
+    setSearch(value)
   }
 
   const columns = [
@@ -77,6 +75,7 @@ export default function RemittancesPanel() {
             columns={columns}
             dataSource={remittances}
             rowKey="id"
+            loading={loading}
             pagination={false}
             locale={{ emptyText: 'No hay remesas' }}
           />

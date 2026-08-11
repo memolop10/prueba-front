@@ -50,3 +50,17 @@
     padding: 10px;
   }
 }
+
+/* Ensure calculator doesn't overflow on very small screens */
+@media (max-width: 425px) {
+  .calculator-panel {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .calculator-panel .keypad {
+    max-width: 100%;
+  }
+}

@@ -13,17 +13,6 @@ export async function listRemittances({ page = 1, limit = 10, search = '', sortB
   return res.json()
 }
 
-export async function listAllRemittances({ search = '', limit = 10, maxPages = 20 } = {}) {
-  const allRemittances = []
-  for (let page = 1; page <= maxPages; page += 1) {
-    const pageData = await listRemittances({ page, limit, search, sortBy: 'charged_at', order: 'desc' })
-    if (!pageData.length) break
-    allRemittances.push(...pageData)
-    if (pageData.length < limit) break
-  }
-  return allRemittances
-}
-
 export async function getRemittanceById(id) {
   const url = `${BASE}/${id}`
   const res = await fetch(url)

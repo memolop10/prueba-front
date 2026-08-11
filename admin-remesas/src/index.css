@@ -19,6 +19,14 @@ body {
   width: 100%;
 }
 
+@media (max-width: 425px) {
+  .app-container {
+    align-items: flex-start;
+    padding: 8px;
+    overflow-x: hidden;
+  }
+}
+
 button {
   font: inherit;
 }

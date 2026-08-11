@@ -7,8 +7,9 @@
 }
 
 .search-bar__input {
-  width: 320px;
-  min-width: 240px;
+  width: 100%;
+  max-width: 360px;
+  min-width: 0;
 }
 
 .search-bar__input .ant-input {
@@ -16,12 +17,36 @@
 }
 
 .search-bar__spacer {
-  width: 320px;
-  min-width: 240px;
+  width: 100%;
+  max-width: 360px;
+  min-width: 0;
 }
 
 .search-bar__actions {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    justify-content: center;
+  }
+
+  .search-bar__input,
+  .search-bar__spacer {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .search-bar {
+    gap: 10px;
+  }
+
+  .search-bar__actions {
+    justify-content: center;
+    width: 100%;
+  }
 }

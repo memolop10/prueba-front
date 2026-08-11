@@ -91,6 +91,83 @@
   table-layout: fixed;
 }
 
+/* Small screens: keep layout compact but allow horizontal scroll */
+@media (max-width: 1024px) {
+  .remittances-panel {
+    padding: 12px;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .remittances-card {
+    min-height: auto;
+    overflow: hidden;
+  }
+
+  .remittances-card__body {
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Use a smaller min-width so the table can fit better on tablet widths.
+     If content still overflows, horizontal scroll will appear. */
+  .remittances-table {
+    width: auto;
+    min-width: 420px;
+    font-size: 11px;
+    table-layout: auto;
+  }
+
+  .remittances-table th,
+  .remittances-table td {
+    white-space: nowrap;
+    padding: 8px 10px;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .remittances-table thead,
+  .remittances-table tbody,
+  .remittances-table tr {
+    display: table;
+    width: 100%;
+    table-layout: auto;
+  }
+
+  .remittances-card__body {
+    max-height: 58vh;
+  }
+}
+
+@media (max-width: 425px) {
+  .remittances-panel {
+    padding: 10px;
+    margin: 0 auto;
+  }
+
+  .remittances-card {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .remittances-card__body {
+    min-width: 0;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .remittances-table {
+    min-width: 340px;
+    width: auto;
+    font-size: 10px;
+  }
+}
+
 .status-pill {
   white-space: nowrap;
   overflow: hidden;

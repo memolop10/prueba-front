@@ -6,7 +6,7 @@ import * as api from '../utils/remittanceApi'
 describe('useRemittanceStore', () => {
   it('fetchRemittances sets data and total', async () => {
     const mockData = [{ id: '1', company: 'A', amount: 100 }]
-    vi.spyOn(api, 'listAllRemittances').mockResolvedValue(mockData)
+    vi.spyOn(api, 'listRemittances').mockResolvedValue(mockData)
 
     const { result } = renderHook(() => useRemittanceStore())
 
@@ -14,7 +14,9 @@ describe('useRemittanceStore', () => {
       await result.current.fetchRemittances({ page: 1, limit: 10 })
     })
 
-    expect(result.current.remittances.length).toBeGreaterThanOrEqual(0)
+    expect(result.current.remittances).toEqual(mockData)
     expect(result.current.total).toBe(mockData.length)
+    expect(api.listRemittances).toHaveBeenCalledOnce()
+    expect(api.listRemittances).toHaveBeenCalledWith({ page: 1, limit: 10, search: '' })
   })
 })
